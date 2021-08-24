@@ -17,7 +17,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
    ```
 
 3. Run command prompt in the local folder of project.
-   #####Make sure [node.js](https://nodejs.org/en/) is installed.
+   ##### Make sure [node.js](https://nodejs.org/en/) is installed.
   
    Run the command to install required npm packages :
    ```sh
