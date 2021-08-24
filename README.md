@@ -6,19 +6,28 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-Clone the project : 
- `git clone https://github.com/Tanmay000009/github-finder`
+1. Clone the project : 
+ ```sh
+ git clone https://github.com/Tanmay000009/github-finder
+ ```
 
-Move to cloned directory. Command : `cd ./github-finder`
+2. Move to cloned directory
+   ```sh
+   cd ./github-finder
+   ```
 
-Run command prompt in the local folder of project.
-Make sure **[node.js](https://nodejs.org/en/)** is installed.
+3. Run command prompt in the local folder of project.
+   #####Make sure [node.js](https://nodejs.org/en/) is installed.
+  
+   Run the command to install required npm packages :
+   ```sh
+   npm i
+   ```
 
-Run the command to install required npm packages :
-`npm i`
-
-In the project directory, you can run:
- `npm start`
+4. In the project directory, you can run:
+   ```sh
+   npm start
+   ```
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
