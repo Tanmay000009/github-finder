@@ -5,6 +5,8 @@ import Navbar from "./components/layout/Navbar";
 import { home } from "./components/pages/home";
 import User from "./components/users/User";
 
+import { notfound } from "./components/pages/notfound";
+
 import Alert from "./components/layout/Alert";
 import { About } from "./components/pages/about";
 
@@ -15,28 +17,21 @@ const App = () => {
   return (
     <GithubState>
       <AlertState>
-    <Router>
-      <div className="App">
-        <Navbar />
-        <div className="container">
-          <Alert />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={home}
-            />
-            <Route exact path="/about" component={About} />
-            <Route
-              exact
-              path="/user/:login"
-              component={User}
-            />
-          </Switch>
-        </div>
-      </div>
-    </Router>
-    </AlertState>
+        <Router>
+          <div className="App">
+            <Navbar />
+            <div className="container">
+              <Alert />
+              <Switch>
+                <Route exact path="/" component={home} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/user/:login" component={User} />
+                <Route component={notfound} />
+              </Switch>
+            </div>
+          </div>
+        </Router>
+      </AlertState>
     </GithubState>
   );
 };
