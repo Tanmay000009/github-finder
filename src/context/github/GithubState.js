@@ -37,21 +37,25 @@ const GithubState = props => {
     // Get repos
 
     // Clear users
+    const clearUsers = () => dispatch({type: CLEAR_USERS});
 
     // Set Loading
     const setLoading = () => dispatch({type: SET_LOADING});
 
-    return <GithubContext.Provider>
-        value={{
-            users: state.users,
-            user: state.user,
-            repos: state.repos,
-            loading: state.loading,
-            searchUsers,
-        }}
-
-        {props.children}
-    </GithubContext.Provider>
-}
+    return (
+        <GithubContext.Provider
+            value={{
+                users: state.users,
+                user: state.user,
+                repos: state.repos,
+                loading: state.loading,
+                searchUsers,
+                clearUsers
+            }}
+        >
+            {props.children}
+        </GithubContext.Provider>
+    );
+};
 
 export default GithubState;
