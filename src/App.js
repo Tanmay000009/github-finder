@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
@@ -16,13 +16,19 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
-  // // For making req to apis
-  // async componentDidMount() {
-  //   this.setState({loading: true});
-  //   const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
-  //   &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-  //   this.setState({users:res.data,loading:false});
-  // }
+  useEffect(  () => {
+    const fetchData = async () => {
+      setLoading(true);
+      const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+      &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+      setUsers(res.data);
+      setLoading(false);
+    }
+    fetchData();
+    // eslint-disable-next-line 
+  }, []);
+
+  
 
   // Search Github Users
   const searchUsers = async (text) => {
