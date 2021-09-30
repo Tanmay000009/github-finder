@@ -12,6 +12,7 @@ class App extends Component {
 
   state = {
     users: [],
+    user: {},
     loading: false,
     alert: null
   };
@@ -34,6 +35,15 @@ class App extends Component {
   
   // Clear users from state
   clearUsers = () => this.setState({ users: [], loading: false});
+
+  // get details about github user
+  getUser = async text => {
+    this.setState({loading: true});
+
+    const res = await axios.get(`https://api.github.com/users/${text}?client_id=$
+    {process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+    this.setState({user: res.data,loading:false});
+  }
 
   // set alert 
   setAlert = (msg,type) => {
