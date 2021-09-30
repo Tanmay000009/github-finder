@@ -12,8 +12,6 @@ import { About } from "./components/pages/about";
 import GithubState from "./context/github/GithubState";
 
 const App = () => {
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   // useEffect(  () => {
