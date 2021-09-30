@@ -29,16 +29,6 @@ const App = () => {
   // }, []);
   
 
-  // get users repos
-  const getUserRepos = async (username) => {
-    setLoading(true);
-    const res =
-      await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=
-    ${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    setRepos(res.data);
-    setLoading(false);
-  };
-
   // set alert
   const set_Alert = (msg, type) => {
     setAlert({ msg, type });
@@ -69,13 +59,7 @@ const App = () => {
             <Route
               exact
               path="/user/:login"
-              render={(props) => (
-                <User
-                  {...props}
-                  getUserRepos={getUserRepos}
-                  repos={repos}
-                />
-              )}
+              component={User}
             />
           </Switch>
         </div>
