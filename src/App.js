@@ -9,6 +9,8 @@ import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
 import { About } from "./components/pages/about";
 
+import GithubState from "./context/github/GithubState";
+
 const App = () => {
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
@@ -27,18 +29,6 @@ const App = () => {
     fetchData();
     // eslint-disable-next-line 
   }, []);
-
-  
-
-  // Search Github Users
-  const searchUsers = async (text) => {
-    setLoading(true);
-    const res =
-      await axios.get(`https://api.github.com/search/users?q=${text}&client_id=$
-    {process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    setUsers(res.data.items);
-    setLoading(false);
-  };
 
   // Clear users from state
   const clearUsers = () => setLoading(false);
@@ -71,6 +61,7 @@ const App = () => {
     setTimeout(() => setAlert(null), 5000);
   };
   return (
+    <GithubState>
     <Router>
       <div className="App">
         <Navbar />
@@ -83,12 +74,11 @@ const App = () => {
               render={(props) => (
                 <Fragment>
                   <Search
-                    searchUsers={searchUsers}
                     clearUsers={clearUsers}
                     showClear={users.length > 0 ? true : false}
                     setAlert={set_Alert}
                   />
-                  <Users loading={loading} users={users} />
+                  <Users  />
                 </Fragment>
               )}
             />
@@ -111,6 +101,7 @@ const App = () => {
         </div>
       </div>
     </Router>
+    </GithubState>
   );
 };
 
