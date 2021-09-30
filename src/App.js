@@ -30,8 +30,7 @@ const App = () => {
     // eslint-disable-next-line 
   }, []);
 
-  // Clear users from state
-  const clearUsers = () => setLoading(false);
+
 
   // get details about github user
   const getUser = async (username) => {
@@ -74,8 +73,6 @@ const App = () => {
               render={(props) => (
                 <Fragment>
                   <Search
-                    clearUsers={clearUsers}
-                    showClear={users.length > 0 ? true : false}
                     setAlert={set_Alert}
                   />
                   <Users  />
