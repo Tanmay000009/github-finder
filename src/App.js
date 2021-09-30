@@ -15,7 +15,8 @@ class App extends Component {
     users: [],
     user: {},
     loading: false,
-    alert: null
+    alert: null,
+    repos: []
   };
 
   // For making req to apis
@@ -38,10 +39,10 @@ class App extends Component {
   clearUsers = () => this.setState({ users: [], loading: false});
 
   // get details about github user
-  getUser = async text => {
+  getUser = async username => {
     this.setState({loading: true});
 
-    const res = await axios.get(`https://api.github.com/users/${text}?client_id=$
+    const res = await axios.get(`https://api.github.com/users/${username}?client_id=$
     {process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
     this.setState({user: res.data,loading:false});
   }
