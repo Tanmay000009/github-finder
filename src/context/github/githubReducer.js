@@ -6,7 +6,7 @@ import {
     GET_USER
 } from '../types';
 
-const exportFun = (state,action) => {
+const exportGithubFun = (state,action) => {
     switch (action.type) {
         case SET_LOADING:
             return {
@@ -43,4 +43,4 @@ const exportFun = (state,action) => {
             return state;
     }
 }
-export default exportFun;
+export default exportGithubFun;
